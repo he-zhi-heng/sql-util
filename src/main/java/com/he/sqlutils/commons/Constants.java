@@ -40,4 +40,10 @@ public class Constants {
     public static final String JAVA_STRING = ".java";
     public static final String KEY_FIELD = "field";
     public static final String KEY_METHOD = "method";
+    /**
+     * 
+     */
+    public static final String ADD = "add";
+    public static final String UPDATE = "update";
+    public static final String DELETE = "delete";
 }
