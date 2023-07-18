@@ -4,14 +4,26 @@ package com.he.sqlutils.commons;
  * @author hemoren
  */
 public class Constants {
+    /**
+     * 数据库初始化标识
+     */
     public static final String SQL_INITDB_ENABLE = "sql.initDB.enable";
+    /**
+     * 文件生成标识
+     */
     public static final String SQL_FILE_ENABLE = "sql.file.enable";
+    /**
+     * 数据库配置
+     */
     public static final String SQL_JDBC_URL = "sql.jdbc.url";
     public static final String SQL_JDBC_USERNAME = "sql.jdbc.username";
     public static final String SQL_JDBC_PASSWORD = "sql.jdbc.password";
     public static final String SQL_JDBC_DRIVER = "sql.jdbc.driver";
+    /**
+     * 扫描的包的位置
+     */
     public static final String SQL_ENTITY_PACKAGE = "sql.entity.package";
-        /**
+    /**
      * 文件夹路径,默认在resources/sql/下
      */
     public static final String FILE_PATH = "src/main/resources/sql/";
