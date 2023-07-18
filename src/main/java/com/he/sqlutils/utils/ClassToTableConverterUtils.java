@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.he.sqlutils.commons.Constants.*;
 import com.he.sqlutils.pojo.entity.Column;
 import com.he.sqlutils.pojo.entity.Table;
 
@@ -15,26 +16,11 @@ import com.he.sqlutils.pojo.entity.Table;
  */
 public class ClassToTableConverterUtils {
 
-    private static final String DEFAULT_TYPE = "VARCHAR(512)";
-    private static final String STRING = "java.lang.String";
-    private static final String INTEGER = "java.lang.Integer";
-    private static final String LONG = "java.lang.Long";
-    private static final String DOUBLE = "java.lang.Double";
-    private static final String FLOAT = "java.lang.Float";
-    private static final String SHORT = "java.lang.Short";
-    private static final String BYTE = "java.lang.Byte";
-    private static final String BOOLEAN = "java.lang.Boolean";
-    private static final String BIGDECIMAL = "java.math.BigDecimal";
-    private static final String DATE = "java.util.Date";
-    private static final String SQLDATE = "java.sql.Date";
-    private static final String LOCALDATE = "java.time.LocalDate";
-    private static final String LOCALDATETIME = "java.time.LocalDateTime";
-
     private static String prefix = "";
     private static Map<String, String> classTypeMap;
     static {
         classTypeMap = new HashMap<>();
-        classTypeMap.put(STRING, DEFAULT_TYPE);
+        classTypeMap.put(STRING,DEFAULT_TYPE);
         classTypeMap.put(INTEGER, "INT");
         classTypeMap.put(LONG, "BIGINT");
         classTypeMap.put(DOUBLE, "DOUBLE");
@@ -73,7 +59,7 @@ public class ClassToTableConverterUtils {
             // 注释信息
             StringBuilder commentAccum = new StringBuilder();
             if (psiField.getName() != null) {
-                show.get(JavaDocUtils.KEY_FIELD).forEach((k, v) -> {
+                show.get(KEY_FIELD).forEach((k, v) -> {
                     if (Objects.equals(k, psiField.getName())) {
                         commentAccum.append(v);
                     }

@@ -52,20 +52,11 @@ public class HumpUtil {
                 }
             }
         }
-
         String res = sb.toString().startsWith(separator) ? sb.substring(1) : sb.toString();
         if (capital) {
             return res.toUpperCase();
         } else {
             return res.toLowerCase();
         }
-    }
-
-    public static void main(String[] args) {
-        String ss = humpToUnderline("Type", false);
-        System.out.println(ss);
-        String underlineString = "_abc_type";
-        String sss = underlineToHump(underlineString);
-        System.out.println(sss);
     }
 }

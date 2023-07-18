@@ -1,0 +1,43 @@
+{"properties": [
+    {
+      "name": "sql.name",
+      "type": "java.lang.String",
+      "description": "A description for 'sql.name'"
+    },
+    {
+      "name": "sql.initDB.enable",
+      "type": "java.lang.String",
+      "description": "A description for 'sql.initDB.enable'"
+    },
+    {
+      "name": "sql.jdbc.url",
+      "type": "java.lang.String",
+      "description": "A description for 'sql.jdbc.url'"
+    },
+    {
+      "name": "sql.jdbc.username",
+      "type": "java.lang.String",
+      "description": "A description for 'sql.jdbc.username'"
+    },
+    {
+      "name": "sql.jdbc.password",
+      "type": "java.lang.String",
+      "description": "A description for 'sql.jdbc.password'"
+    },
+    {
+      "name": "sql.jdbc.driver",
+      "type": "java.lang.String",
+      "description": "A description for 'sql.jdbc.driver'"
+    },
+    {
+      "name": "sql.entity.package",
+      "type": "java.lang.String",
+      "description": "A description for 'sql.entity.package'"
+    },
+    {
+      "name": "sql.file.enable",
+      "type": "java.lang.String",
+      "description": "A description for 'sql.file.enable'"
+    }
+  ]
+}

@@ -10,6 +10,7 @@ import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.FieldDoc;
 import com.sun.javadoc.MethodDoc;
 import com.sun.javadoc.RootDoc;
+import static com.he.sqlutils.commons.Constants.*;
 
 /**
  * javadoc工具类
@@ -17,13 +18,6 @@ import com.sun.javadoc.RootDoc;
  */
 public class JavaDocUtils {
     private static final Logger log = LoggerFactory.getLogger(JavaDocUtils.class);
-    private static final String DOC_LET_STRING = "-doclet";
-    private static final String ENCODING_STRING = "-encoding";
-    private static final String UTF_8_STRING = "utf-8";
-    private static final String SRC_MAIN_JAVA_STRING = "src/main/java/";
-    private static final String JAVA_STRING = ".java";
-    public static final String KEY_FIELD = "field";
-    public static final String KEY_METHOD = "method";
 
     public static Map<String, Map<String, String>> getJavaDoc(String name) {
         com.sun.tools.javadoc.Main.execute(new String[] { DOC_LET_STRING,
