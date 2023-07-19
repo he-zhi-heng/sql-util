@@ -1,21 +1,14 @@
 package com.he.sqlutils.utils;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Properties;
-
-import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import static com.he.sqlutils.commons.Constants.*;
 
-import com.alibaba.druid.pool.DruidDataSource;
-import com.he.sqlutils.config.PropertyFactory;
 import com.he.sqlutils.pojo.entity.Table;
 
 /**
@@ -65,36 +58,22 @@ public class CreateDbSqlUtils {
         SQL_MAP.put(tableName, sqlString);
     }
 
-    private static DataSource iniDataSource() {
-        Properties properties = PropertyFactory.getProperties();
-
-        DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setUrl(properties.getProperty(SQL_JDBC_URL));
-        dataSource.setUsername(properties.getProperty(SQL_JDBC_USERNAME));
-        dataSource.setPassword(properties.getProperty(SQL_JDBC_PASSWORD));
-        try {
-            dataSource.init();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return dataSource;
-
-    }
-
     /**
      * 判断数据库中是否存在表
      * 
      * @param tableName
      */
     private static boolean isExistTable(String tableName) {
-        try (Connection connection = iniDataSource().getConnection()) {
-            ResultSet tables = connection.getMetaData().getTables(null, null, null, new String[] { "TABLE" });
+        try {
+            ResultSet tables = SqlExecutionUtils.getAllTables();
+            tables.beforeFirst();
             // 遍历tables判断表名是否存在SQL_MAP中
             boolean flag = false;
             while (tables.next()) {
                 String table = tables.getString("TABLE_NAME");
                 if (Objects.equals(tableName, table)) {
                     flag = true;
+                    logger.info("表名:{}已存在", tableName);
                     break;
                 }
             }
@@ -112,16 +91,12 @@ public class CreateDbSqlUtils {
      */
     private static void createTable(String tableName) {
         String sql = SQL_MAP.get(tableName);
-        if (sql == null || "".equals(sql)) {
+        if (Objects.isNull(sql) || "".equals(sql)) {
             throw new RuntimeException("sql语句为空");
         }
-        try (Connection connection = iniDataSource().getConnection()) {
-            String[] sqls = sql.split(";");
-            for (String s : sqls) {
-                connection.prepareStatement(s).execute();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        String[] sqls = sql.split(";");
+        for (String s : sqls) {
+            SqlExecutionUtils.executeSql(s);
         }
     }
 
@@ -135,6 +110,10 @@ public class CreateDbSqlUtils {
                 createTable(k);
             }
         });
+    }
+
+    public static void main(String[] args) {
+        initDb("src/main/java/com/he/sqlutils/pojo/entity");
     }
 
 }

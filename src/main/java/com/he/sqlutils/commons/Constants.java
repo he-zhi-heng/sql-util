@@ -33,6 +33,7 @@ public class Constants {
     public static final String SQLDATE = "java.sql.Date";
     public static final String LOCALDATE = "java.time.LocalDate";
     public static final String LOCALDATETIME = "java.time.LocalDateTime";
+
     public static final String DOC_LET_STRING = "-doclet";
     public static final String ENCODING_STRING = "-encoding";
     public static final String UTF_8_STRING = "utf-8";
@@ -46,4 +47,9 @@ public class Constants {
     public static final String ADD = "add";
     public static final String UPDATE = "update";
     public static final String DELETE = "delete";
+    /**
+     * 
+     */
+    public static final String CREATE_TIME = "create_time";
+    public static final String UPDATE_TIME = "update_time";
 }
