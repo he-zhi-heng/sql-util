@@ -1,6 +1,7 @@
 package com.he.sqlutils.config;
 
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,17 +20,21 @@ public class AutoConfiguration {
 
 
     public AutoConfiguration() {
+        long startTime = System.currentTimeMillis();
         Properties properties = PropertyFactory.getProperties();
         boolean dbInitFlag = Boolean.parseBoolean(properties.getProperty(SQL_INITDB_ENABLE, "true"));
         boolean sqlFileFlag = Boolean.parseBoolean(properties.getProperty(SQL_FILE_ENABLE, "true"));
         if (dbInitFlag) {
             SqlService.initDb();
             logger.info("数据库初始化成功");
+            SqlService.updateDb();
         }
         if (sqlFileFlag) {
             SqlService.generateSqlFile();
             logger.info("sql文件生成成功");
         }
-      
+        long endTime = System.currentTimeMillis();
+        long timeInSeconds = TimeUnit.MILLISECONDS.toSeconds(endTime - startTime);
+        logger.info("sql工具执行耗时：{}s", timeInSeconds);
     }
 }
