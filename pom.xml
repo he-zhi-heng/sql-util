@@ -59,7 +59,7 @@
 		<repository>
 			<id>maven-public</id>
 			<name>Nexus Repository</name>
-			<url>http://43.138.114.69:8081/repository/maven-public/</url>
+			<url>http://***:8081/repository/maven-public/</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
@@ -72,7 +72,7 @@
 		<pluginRepository>
 			<id>maven-public</id>
 			<name>Nexus Plugin Repository</name>
-			<url>http://43.138.114.69:8081/repository/maven-public</url>
+			<url>http://***:8081/repository/maven-public</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
@@ -85,12 +85,12 @@
 		<repository>            <!--部署项目产生的构件到远程仓库需要的信息 -->
 			<id>maven-releases</id>            <!-- 此处id和settings.xml的id保持一致 -->
 			<name>Nexus Release Repository</name>
-			<url>http://43.138.114.69:8081/repository/maven-releases</url>
+			<url>http://***:8081/repository/maven-releases</url>
 		</repository>
 		<snapshotRepository>            <!--构件的快照部署到哪里？如果没有配置该元素，默认部署到repository元素配置的仓库，参见distributionManagement/repository元素 -->
 			<id>maven-snapshots</id>            <!-- 此处id和settings.xml的id保持一致 -->
 			<name>Nexus Snapshot Repository</name>
-			<url>http://43.138.114.69:8081/repository/maven-snapshots</url>
+			<url>http:://***:8081/repository/maven-snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 
